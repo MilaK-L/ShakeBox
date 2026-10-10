@@ -1,11 +1,11 @@
-const CACHE = 'shakebox-v1';
+const CACHE = 'shakebox-v2';
 const SHELL = [
   './',
   'index.html',
   'css/style.css',
   'js/app.js',
   'manifest.webmanifest',
-  'icons/icon.svg',
+  'icons/favicon-64.png',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/apple-touch-icon.png',
