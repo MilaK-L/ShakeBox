@@ -1,4 +1,4 @@
-const CACHE = 'shakebox-v2';
+const CACHE = 'shakebox-v3';
 const SHELL = [
   './',
   'index.html',

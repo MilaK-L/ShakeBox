@@ -2,6 +2,7 @@
   'use strict';
 
   const MAX_BALLS = 10;
+  const EMPTY_SIDE_CHANCE = 0.1;
   const BALL = [['#FFB8A8', '#F08C78'], ['#A8E0C8', '#6CC29E'], ['#C9B8F2', '#9C86DE'], ['#FFE08A', '#F2BE45'], ['#A9D6F5', '#6FB2E6'], ['#F8B8D8', '#E78AB8']];
   const TILE = [['#FFD3C7', '#F5B5A5'], ['#C9EEDD', '#A6DCC4'], ['#DDD2F7', '#C0B1EE'], ['#FFEBB0', '#F2D27A'], ['#CBE6F8', '#A6D0EF'], ['#FAD0E4', '#EFADCD']];
   const HERO = [
@@ -277,7 +278,8 @@
     const s = state;
     if (s.screen !== 'game' || s.phase === 'shaking' || s.phase === 'question') return;
     const n = s.total;
-    const left = n <= 2 ? rand(n + 1) : 1 + rand(n - 1);
+    // Fixed rate so an empty side stays rare at every level (uniform 0…n would be 50% at n=3)
+    const left = Math.random() < EMPTY_SIDE_CHANCE ? (Math.random() < .5 ? 0 : n) : 1 + rand(n - 1);
     const side = Math.random() < .5 ? 'L' : 'R';
     clearConfetti();
     Object.assign(s, { phase: 'shaking', wrong: [] });
