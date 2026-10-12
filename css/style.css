@@ -1,8 +1,15 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
+/* iOS paints the status bar / overscroll area from the page background, so it must match the game surface */
+html, body {
+  background-color: #FFF8EF;
+  background-image:
+    linear-gradient(rgba(169,150,222,.09) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(169,150,222,.09) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+}
 body {
   margin: 0;
-  background: #F3EEF8;
   font-family: 'Fredoka', system-ui, sans-serif;
   color: #3B3355;
   -webkit-tap-highlight-color: transparent;
@@ -44,6 +51,7 @@ button { font-family: inherit; color: inherit; -webkit-tap-highlight-color: tran
   background-size: 26px 26px;
 }
 @media (min-width: 640px) and (min-height: 940px) {
+  html, body { background: #F3EEF8; }
   body { display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
   .phone {
     width: 390px;
